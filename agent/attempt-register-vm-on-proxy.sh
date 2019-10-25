@@ -20,8 +20,6 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null && pwd)"
 
 function run-proxy-agent {
   # Start the proxy process
-  # https://github.com/google/inverting-proxy/blob/master/agent/Dockerfile
-  # Connect proxy agent to Kubeflow Pipelines UI
   /opt/bin/proxy-forwarding-agent \
         --debug=${DEBUG} \
         --proxy=${PROXY_URL} \
