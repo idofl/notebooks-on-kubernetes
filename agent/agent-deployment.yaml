@@ -14,7 +14,7 @@ spec:
         app: proxy-agent
     spec:
       containers:
-      - image: gcr.io/vkovalevskyi-palyground/agent-gke:m8
+      - image: gcr.io/public-gcr/agent
         imagePullPolicy: IfNotPresent
         name: proxy-agent
       serviceAccountName: agent-runner
