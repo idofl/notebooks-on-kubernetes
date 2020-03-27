@@ -34,7 +34,7 @@ function run-proxy-agent {
         --health-check-unhealthy-threshold=${HEALTH_CHECK_UNHEALTHY_THRESHOLD}
 }
 
-# Check if the cluster already have proxy agent installed by checking ConfigMap.
+# Check if the cluster already has proxy agent installed by checking ConfigMap.
 if kubectl get configmap inverse-proxy-config; then
   # If ConfigMap already exist, reuse the existing endpoint (a.k.a BACKEND_ID) and same ProxyUrl.
   PROXY_URL=$(kubectl get configmap inverse-proxy-config -o json | jq -r ".data.ProxyUrl")
