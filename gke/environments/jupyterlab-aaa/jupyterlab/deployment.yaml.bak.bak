@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: jupyterlab-aaa
+  labels:
+    app: jupyterlab-aaa
+spec:
+  selector:
+    matchLabels:
+      app: jupyterlab-aaa
+  template:
+    metadata:
+      labels:
+        app: jupyterlab-aaa
+    spec:
+      containers:
+      - image: gcr.io/deeplearning-platform-release/base-cpu:latest
+        imagePullPolicy: Always
+        name: jupyterlab-aaa
+        ports:
+        - containerPort: 8080
+      serviceAccountName: default

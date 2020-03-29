@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: proxy-agent-bbb
+  labels:
+    app: proxy-agent-bbb
+spec:
+  selector:
+    matchLabels:
+      app: proxy-agent-bbb
+  template:
+    metadata:
+      labels:
+        app: proxy-agent-bbb
+    spec:
+      containers:
+      - name: proxy-agent
+        image: gcr.io/mam-nooage/agent:sed
+        imagePullPolicy: Always
+        env:
+          # Must be the same as in agent/service.yaml
+          - name: JUPYTERLAB_SERVICE_NAME
+            value: jupyterlab-bbb
+          # Used to create the unique configmap when deploying the agent.
+          - name: JUPYTERLAB_ID
+            value: bbb
+      serviceAccountName: agent-runner

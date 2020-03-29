@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: proxy-agent-ddd
+  labels:
+    app: proxy-agent-ddd
+spec:
+  selector:
+    matchLabels:
+      app: proxy-agent-ddd
+  template:
+    metadata:
+      labels:
+        app: proxy-agent-ddd
+    spec:
+      containers:
+      - name: proxy-agent
+        image: gcr.io/mam-nooage/agent:sed
+        imagePullPolicy: Always
+        env:
+          # Must be the same as in agent/service.yaml
+          - name: JUPYTERLAB_SERVICE_NAME
+            value: jupyterlab-ddd
+          # Used to create the unique configmap when deploying the agent.
+          - name: JUPYTERLAB_ID
+            value: ddd
+      serviceAccountName: agent-runner
