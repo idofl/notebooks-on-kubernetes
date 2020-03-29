@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ids=( "aaa" "bbb" "ccc" "ddd")
 
 for id in "${ids[@]}"

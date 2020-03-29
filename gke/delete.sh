@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Common to all Jupyterlab enviornments.
 kubectl delete -f agent/sa.yaml
 kubectl delete -f agent/role.yaml

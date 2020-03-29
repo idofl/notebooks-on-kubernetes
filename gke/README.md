@@ -1,7 +1,7 @@
 ## Deploy
 ```sh
 chmod +x deploy.sh
-./deploy.sh
+./deploy.sh [YOUR_PROJECT_ID]
 ```
 
 ## Comments and questions:

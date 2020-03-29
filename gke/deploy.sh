@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Usage deploy.sh [YOUR_PROJECT_ID]
+
 # Common to all Jupyterlab enviornments.
 kubectl apply -f agent/sa.yaml
 kubectl apply -f agent/role.yaml
@@ -22,6 +26,8 @@ do
   find ./environments/agent-${id} -type f -exec sed -i.bak "s/<JUPYTERLAB_ID>/${id}/g" {} \;
 
   find ./environments/jupyterlab-${id} -type f -exec sed -i.bak "s/<SERVICE_PORT>/${port_current}/g" {} \;
+
+  find ./environments/agent-${id} -type f -exec sed -i.bak "s/<PROJECT_ID>/$1/g" {} \;
 
   kubectl apply -f environments/jupyterlab-${id}/deployment.yaml
   kubectl apply -f environments/jupyterlab-${id}/service.yaml
