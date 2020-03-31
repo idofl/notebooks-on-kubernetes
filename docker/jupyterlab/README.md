@@ -1,0 +1,1 @@
+Shows how to uses GCS as a persistent storage for Notebooks on GKE.

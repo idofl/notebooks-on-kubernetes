@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: proxy-agent
-        image: gcr.io/<PROJECT_ID>/agent:sed
+        image: gcr.io/mam-nooage/agent:gke
         imagePullPolicy: Always
         env:
           # Must be the same as in agent/service.yaml

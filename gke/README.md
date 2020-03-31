@@ -1,12 +1,27 @@
 ## Deploy
-```sh
-chmod +x deploy.sh
-./deploy.sh [YOUR_PROJECT_ID]
-```
+To deploy the infrastructure:
 
-## Comments and questions:
-- Creates as many deployments as needed but if two of them are on the same instance, they share the same proxy-url.
-  - Should one deployment be per instance (what's the point of using GKE)
-  - [KO] Can we use different port even if the same URL? aaa could be 8080, bbb could be 8081, etc...
-  - How do we create on proxy url not using the BACKENDID but something else (SERVICEID?)
-- 
+1. Set up your variables
+
+    ```sh
+    # Your working project id. ex: my_project
+    PROJECT_ID=[YOUR_PROJECT_ID]
+    # Comma-separated list of deployments. ex: user1,deployment2,test3
+    JUPYTERLAB_IDS=[YOUR_IDS]
+    ```
+
+1. Deploy
+
+    ```sh
+    bash deploy.sh ${PROJECT_ID} ${JUPYTERLAB_IDS}
+    ```
+
+1. Wait for deployment to be done
+
+1. Get Inverting proxy URLs
+
+    ```sh
+    bash get_urls ${JUPYTERLAB_IDS}
+    ```
+
+1. Access a Notebook using the relevant URL.

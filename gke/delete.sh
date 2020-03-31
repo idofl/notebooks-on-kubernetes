@@ -1,12 +1,19 @@
 #!/bin/bash
 
+if [ $# -eq 0 ]
+  then
+    echo "Please provide a comma-separated list of deployment ids"
+    echo "ex: delete.sh deployment1,...,deploymentN"
+    exit 1
+fi
+
 # Common to all Jupyterlab enviornments.
 kubectl delete -f agent/sa.yaml
 kubectl delete -f agent/role.yaml
 kubectl delete -f agent/rolebinding.yaml
 
 # Represents the list of users.
-ids=( "aaa" "bbb" "ccc" "ddd")
+IFS=',' read -r -a ids <<< "$1"
 
 for id in "${ids[@]}"
 do

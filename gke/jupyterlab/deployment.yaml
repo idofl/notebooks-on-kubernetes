@@ -14,9 +14,12 @@ spec:
         app: jupyterlab-<JUPYTERLAB_ID>
     spec:
       containers:
-      - image: gcr.io/deeplearning-platform-release/base-cpu:latest
+      - name: jupyterlab-<JUPYTERLAB_ID>
+        image: gcr.io/mam-nooage/ain:gke
         imagePullPolicy: Always
-        name: jupyterlab-<JUPYTERLAB_ID>
+        env:
+        - name: USER_NOTEBOOK_LOCATION
+          value: gs://<GCS_NOTEBOOK_BUCKET>/allusers/department/<JUPYTERLAB_ID>
         ports:
         - containerPort: 8080
       serviceAccountName: default
