@@ -24,4 +24,7 @@ spec:
           # Used to create the unique configmap when deploying the agent.
           - name: JUPYTERLAB_ID
             value: <JUPYTERLAB_ID>
+          # Used to register a unique backend with the proxy inverter
+          - name: JUPYTERLAB_USER
+            value: <JUPYTERLAB_USER>
       serviceAccountName: agent-runner

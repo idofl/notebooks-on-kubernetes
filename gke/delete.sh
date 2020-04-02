@@ -8,6 +8,7 @@ if [ $# -eq 0 ]
 fi
 
 # Common to all Jupyterlab enviornments.
+# TODO: delete the service account if all deployments had been deleted
 kubectl delete -f agent/sa.yaml
 kubectl delete -f agent/role.yaml
 kubectl delete -f agent/rolebinding.yaml
